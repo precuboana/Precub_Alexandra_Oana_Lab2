@@ -33,8 +33,22 @@ namespace Precub_Alexandra_Oana_Lab2.Controllers
                 return NotFound();
             }
 
+
+
+            // Include the related books (and their Genre for display)
             var author = await _context.Author
+                .Include(a => a.Books)
+                    .ThenInclude(b => b.Genre)
                 .FirstOrDefaultAsync(m => m.ID == id);
+
+
+
+
+
+
+
+            //var author = await _context.Author
+            //    .FirstOrDefaultAsync(m => m.ID == id);
             if (author == null)
             {
                 return NotFound();

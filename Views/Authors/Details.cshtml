@@ -25,6 +25,42 @@
     </dl>
 </div>
 <div>
+    <h4>Books by this author</h4>
+    <hr />
+    @if (Model.Books != null && Model.Books.Any())
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Genre</th>
+                    <th>Price</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var book in Model.Books)
+                {
+                    <tr>
+                        <td>@book.Title</td>
+                        <td>@(book.Genre?.Name ?? String.Empty)</td>
+                        <td>@book.Price.ToString("C")</td>
+                        <td>
+                            <a asp-controller="Books" asp-action="Details" asp-route-id="@book.ID">Details</a> |
+                            <a asp-controller="Books" asp-action="Edit" asp-route-id="@book.ID">Edit</a> |
+                            <a asp-controller="Books" asp-action="Delete" asp-route-id="@book.ID">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p><em>No books for this author.</em></p>
+    }
+</div>
+<div>
     <a asp-action="Edit" asp-route-id="@Model?.ID">Edit</a> |
     <a asp-action="Index">Back to List</a>
 </div>
