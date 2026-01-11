@@ -1,3 +1,4 @@
 <Solution>
+  <Project Path="../GrpcCustomersService/GrpcCustomersService.csproj" Id="d17c78ea-e71f-4b79-942e-6a7e5c247899" />
   <Project Path="Precub_Alexandra_Oana_Lab2.csproj" />
 </Solution>
